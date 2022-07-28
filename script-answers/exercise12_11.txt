@@ -1,0 +1,27 @@
+docker exec -it todo-backend-redis-1 bash
+
+root@49ebf7b8ee52:/data# redis-cli
+
+127.0.0.1:6379> KEYS *
+1) "added_todos"
+2) "testi"
+
+127.0.0.1:6379> GET added_todos
+"1"
+
+127.0.0.1:6379> SET added_todos 9001
+OK
+
+REDIS_URL=redis://localhost:58287 MONGO_URL=mongodb://the_username:the_password@localhost:3456/the_database npm run dev
+
+127.0.0.1:6379> GET added_todos
+"9002"
+
+127.0.0.1:6379> DEL added_todos
+(integer) 1
+
+127.0.0.1:6379> GET added_todos
+(nil)
+
+127.0.0.1:6379> GET added_todos
+"1"
