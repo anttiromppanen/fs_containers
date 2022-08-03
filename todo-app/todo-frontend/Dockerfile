@@ -9,6 +9,8 @@ COPY . .
 
 RUN npm ci --legacy-peer-deps
 
+RUN CI=true npm test
+
 RUN npm run build
 
 # New stage
